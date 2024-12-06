@@ -1,6 +1,6 @@
 ﻿namespace SalesWebMVC.Models.Enums
 {
-    public enum SalesStatus:int
+    public enum SaleStatus:int
     {
         pending,
         billed,

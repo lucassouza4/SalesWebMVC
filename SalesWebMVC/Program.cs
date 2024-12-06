@@ -4,11 +4,16 @@ using SalesWebMVC.Data;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<SalesWebMVCContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("SalesWebMVCContext"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("SalesWebMVCContext"))));
+builder.Services.AddScoped<SeedingService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+using var scope = app.Services.CreateScope();
+var seeder = scope.ServiceProvider.GetRequiredService<SeedingService>();
+seeder.Seed();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
