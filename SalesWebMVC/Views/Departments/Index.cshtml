@@ -4,11 +4,19 @@
     ViewData["Title"] = "Departments";
 }
 
-<h1>Departments</h1>
+<div style="
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding:1rem">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    <h1>@ViewData["Title"]</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-outline-success">Create New</a>
+    </p>
+</div>
+
 <table class="table">
     <thead>
         <tr>
